@@ -73,7 +73,8 @@ public class Panel extends JPanel {
 
         textSLEEP_PRESS=new JTextArea("400");
         textSLEEP_PRESS.setBounds(250,75,100,20);
-        textSLEEP_PRESS.setToolTipText("Time in milliseconds after mouse button will release.");
+        textSLEEP_PRESS.setToolTipText("Time in milliseconds after which mouse button will release.\n" +
+                "Time at which button is being pressed.");
         add(textSLEEP_PRESS);
 
         labelSleepRelease = new JLabel("Choose sleep time after release (ms): ");
@@ -82,7 +83,8 @@ public class Panel extends JPanel {
 
         textSLEEP_RELEASE=new JTextArea("400");
         textSLEEP_RELEASE.setBounds(250,105,100,20);
-        textSLEEP_RELEASE.setToolTipText("Time in milliseconds after mouse button will be pressed again.");
+        textSLEEP_RELEASE.setToolTipText("Time in milliseconds after which mouse button will be pressed again.\n" +
+                "Delay between clicks.");
         add(textSLEEP_RELEASE);
 
         labelClicks = new JLabel("Choose number of clicks: ");
@@ -114,6 +116,7 @@ public class Panel extends JPanel {
                     labelRemainingClicksCounterText.setEnabled(false);
                     isClicksNumberEnabled=false;
                     labelRemainingClicksCounter.setText("");
+                    C.CLICKS_NUMBER=0;
                 }
             }
         });
@@ -167,21 +170,27 @@ public class Panel extends JPanel {
                         if(isRunning) {
                             System.out.println("Running...");
                             try {
+                                if(isClicksNumberEnabled) {
+                                    if( C.CLICKS_NUMBER<=0){
+                                        StopClicker();
+                                        System.out.println("Stopped: all clicks has been performed.");
+                                    }
+                                }
                                 robot = new Robot();
                                 if(C.BUTTON_ID==3) button = InputEvent.BUTTON3_DOWN_MASK;//right click
                                 if(C.BUTTON_ID==2) button = InputEvent.BUTTON2_DOWN_MASK;//scroll click
                                 if(C.BUTTON_ID==1) button = InputEvent.BUTTON1_DOWN_MASK;//left click
-                                robot.mousePress(button);
-                                System.out.println("Pressed");
-                                Thread.sleep(C.SLEEP_AFTER_PRESS);
-                                robot.mouseRelease(button);
-                                System.out.println("Released");
-                                Thread.sleep(C.SLEEP_AFTER_RELEASE);
-                                if(isClicksNumberEnabled && C.CLICKS_NUMBER<=0){
-                                    StopClicker();
-                                    System.out.println("Stopped: all clicks has been performed.");
-                                } else {
+                                if(isRunning) {
+                                    robot.mousePress(button);
+                                    System.out.println("Pressed");
+                                    Thread.sleep(C.SLEEP_AFTER_PRESS);
+                                    robot.mouseRelease(button);
+                                    System.out.println("Released");
+                                    Thread.sleep(C.SLEEP_AFTER_RELEASE);
+                                }
+                                if(C.CLICKS_NUMBER!=0) {
                                     C.CLICKS_NUMBER--;
+                                    System.out.println("Remaining clicks: "+C.CLICKS_NUMBER);
                                     labelRemainingClicksCounter.setText(String.valueOf(C.CLICKS_NUMBER));
                                 }
                             } catch (Exception e) {
@@ -208,7 +217,14 @@ public class Panel extends JPanel {
             try {
                 C.SLEEP_AFTER_PRESS = Integer.parseInt(textSLEEP_PRESS.getText());
                 C.SLEEP_AFTER_RELEASE = Integer.parseInt(textSLEEP_RELEASE.getText());
-                if(isClicksNumberEnabled) C.CLICKS_NUMBER = Integer.parseInt(textCLICKS_NUMBER.getText());
+                if(isClicksNumberEnabled) {
+                    if(Integer.parseInt(textCLICKS_NUMBER.getText())==0) {
+                        JOptionPane.showMessageDialog(this, "Number of clicks must be greater than 0!",
+                                "Error", JOptionPane.ERROR_MESSAGE);
+                        err=true;
+                    }
+                    if(!err) C.CLICKS_NUMBER = Integer.parseInt(textCLICKS_NUMBER.getText());
+                }
             } catch (NumberFormatException nfe) {
                 err=true;
                 JOptionPane.showMessageDialog(this, "You need write number!",
@@ -216,7 +232,7 @@ public class Panel extends JPanel {
                 System.out.println("Bad input error: " + nfe);
             }
             if(!err){
-            labelRemainingClicksCounter.setText(String.valueOf(C.CLICKS_NUMBER));
+            if(isClicksNumberEnabled) labelRemainingClicksCounter.setText(String.valueOf(C.CLICKS_NUMBER));
             isRunning = true;
             buttonStop.setEnabled(true);
             buttonStart.setEnabled(false);
