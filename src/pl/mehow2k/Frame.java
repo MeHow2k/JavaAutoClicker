@@ -6,8 +6,8 @@ import java.awt.*;
 public class Frame extends JFrame {
     Frame(){
         super("Auto Clicker");
-        //Image icon = new ImageIcon(getClass().getClassLoader().getResource("player2.png")).getImage();
-        //setIconImage(icon);
+        Image icon = new ImageIcon(getClass().getClassLoader().getResource("icon.png")).getImage();
+        setIconImage(icon);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setResizable(false);
         setSize(C.FRAME_WIDTH,C.FRAME_HEIGHT);
