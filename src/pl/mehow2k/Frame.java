@@ -5,7 +5,7 @@ import java.awt.*;
 
 public class Frame extends JFrame {
     Frame(){
-        super("Auto Clicker");
+        super("Auto Clicker by MeHow2k");
         Image icon = new ImageIcon(getClass().getClassLoader().getResource("icon.png")).getImage();
         setIconImage(icon);
         setDefaultCloseOperation(EXIT_ON_CLOSE);

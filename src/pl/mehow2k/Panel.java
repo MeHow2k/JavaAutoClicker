@@ -17,7 +17,7 @@ public class Panel extends JPanel {
     JCheckBox checkBoxClicksNumber;
     Panel() {
         super(null);
-        labelAuthor = new JLabel("AutoClicker by MeHow2k                                           " +
+        labelAuthor = new JLabel("AutoClicker by MeHow2k         2024                         " +
                 "github.com/MeHow2k ");
         labelAuthor.setBounds(10,C.FRAME_HEIGHT-70,400,30);
         add(labelAuthor);
@@ -73,7 +73,7 @@ public class Panel extends JPanel {
 
         textSLEEP_PRESS=new JTextArea("400");
         textSLEEP_PRESS.setBounds(250,75,100,20);
-        textSLEEP_PRESS.setToolTipText("Time in milliseconds after which mouse button will release.\n" +
+        textSLEEP_PRESS.setToolTipText("Time in milliseconds after which mouse button will release. " +
                 "Time at which button is being pressed.");
         add(textSLEEP_PRESS);
 
@@ -83,7 +83,7 @@ public class Panel extends JPanel {
 
         textSLEEP_RELEASE=new JTextArea("400");
         textSLEEP_RELEASE.setBounds(250,105,100,20);
-        textSLEEP_RELEASE.setToolTipText("Time in milliseconds after which mouse button will be pressed again.\n" +
+        textSLEEP_RELEASE.setToolTipText("Time in milliseconds after which mouse button will be pressed again. " +
                 "Delay between clicks.");
         add(textSLEEP_RELEASE);
 

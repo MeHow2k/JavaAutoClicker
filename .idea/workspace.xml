@@ -10,13 +10,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="eac6b3d0-8278-4da8-9897-359c92a18892" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/artifacts/AutoClicker_jar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Graphics/icon.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/META-INF/MANIFEST.MF" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AutoClicker.iml" beforeDir="false" afterPath="$PROJECT_DIR$/AutoClicker.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pl/mehow2k/Frame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/pl/mehow2k/Frame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pl/mehow2k/Panel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/pl/mehow2k/Panel.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -103,12 +98,20 @@
       <option name="project" value="LOCAL" />
       <updated>1710536639299</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Added icon,jar and fixed Project Structure">
+      <created>1710591926449</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1710591926449</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Initial commit" />
     <MESSAGE value="Fixed A LOT of errors" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed A LOT of errors" />
+    <MESSAGE value="Added icon,jar and fixed Project Structure" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added icon,jar and fixed Project Structure" />
   </component>
 </project>
