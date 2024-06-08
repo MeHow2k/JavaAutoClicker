@@ -3,6 +3,7 @@
     <output-path>$PROJECT_DIR$/out/artifacts/AutoClicker_jar</output-path>
     <root id="archive" name="AutoClicker.jar">
       <element id="module-output" name="AutoClicker" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/com/melloware/jintellitype/1.4.1/jintellitype-1.4.1.jar" path-in-jar="/" />
     </root>
   </artifact>
 </component>
